@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/Todo.css";
 
 function Todo({ todo, onDelete }) {
   const formattedDate = new Date(todo.created_at).toLocaleDateString("en-US");

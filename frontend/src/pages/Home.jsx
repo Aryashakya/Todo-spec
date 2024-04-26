@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import api from "../api";
 import Todo from "../components/Todo";
+import "../styles/Home.css";
 
 function Home() {
   const [todos, setTodos] = useState([]);
@@ -65,7 +66,7 @@ function Home() {
           value={title}
         />
         <br />
-        <button type="submit">Create Todo</button>
+        <input type="submit"></input>
       </form>
     </div>
   );
