@@ -2,7 +2,6 @@ div {
   font-family: Arial, sans-serif;
 }
 
-/* Styles for the notes section */
 .notes-section {
   margin-bottom: 2rem;
 }
@@ -12,7 +11,6 @@ div {
   font-size: 24px;
 }
 
-/* Styles for individual notes - assuming your Note component has some container element */
 .note {
   background-color: #f9f9f9;
   border-left: 5px solid #007bff;
@@ -21,7 +19,6 @@ div {
   border-radius: 5px;
 }
 
-/* Styles for the form section */
 form {
   background-color: #fff;
   padding: 20px;
@@ -64,4 +61,19 @@ form input[type="submit"] {
 
 form input[type="submit"]:hover {
   background-color: #0056b3;
+}
+
+button {
+  background-color: #ffffff; 
+  color: black;
+  border: 2px solid gray;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 10px;
+}
+
+button:hover {
+  background-color: #cacfd1; 
 }
