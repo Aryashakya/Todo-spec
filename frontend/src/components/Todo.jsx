@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/Todo.css";
 
 function Todo({ todo, onToggle, onUpdate, onDelete }) {
-  const formattedDate = new Date(todo.created_at).toLocaleDateString("en-US");
+  const formattedDate = new Date(todo.created_at).toLocaleDateString("en-GB");
 
   return (
     <div className="todo-container">
