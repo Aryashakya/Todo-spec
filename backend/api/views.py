@@ -8,7 +8,12 @@ class TodoListCreate(generics.ListCreateAPIView):
     serializer_class = TodoSerializer
 
     def get_queryset(self):
-        return Todo.objects.all()
+        queryset = Todo.objects.all()
+        completed = self.request.query_params.get("completed", None)
+        if completed is not None:
+            completed = completed.lower() in ["true/", "1/", "t/"]
+            queryset = queryset.filter(completed=completed)
+        return queryset
 
     def perform_create(self, serializer):
         if serializer.is_valid():
