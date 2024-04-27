@@ -9,16 +9,17 @@ function Home() {
   const [action, setAction] = useState("Create");
   const [creating, setCreating] = useState(true);
   const [id, setId] = useState(0);
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    getTodos();
+    getTodos(filter);
     setCreating(true);
     setAction("Create");
-  }, []);
+  }, [filter]);
 
-  const getTodos = () => {
+  const getTodos = (filter) => {
     api
-      .get("/api/todos/")
+      .get(`/api/todos/${filter}`)
       .then((res) => res.data)
       .then((data) => {
         setTodos(data);
@@ -33,7 +34,7 @@ function Home() {
       .then((res) => {
         if (res.status === 200) alert("Todo toggled");
         else alert("Failed to toggle todo.");
-        getTodos();
+        getTodos(filter);
       })
       .catch((err) => alert(err));
   };
@@ -52,7 +53,7 @@ function Home() {
       .then((res) => {
         if (res.status === 200) alert("Todo updated");
         else alert("Failed to update todo.");
-        getTodos();
+        getTodos(filter);
       })
       .catch((err) => alert(err));
   };
@@ -63,7 +64,7 @@ function Home() {
       .then((res) => {
         if (res.status === 204) alert("Note deleted");
         else alert("Failed to delete.");
-        getTodos();
+        getTodos(filter);
       })
       .catch((error) => alert(error));
   };
@@ -75,7 +76,7 @@ function Home() {
       .then((res) => {
         if (res.status === 201) alert("Todo created");
         else alert("Failed to create todo.");
-        getTodos();
+        getTodos(filter);
       })
       .catch((err) => alert(err));
   };
@@ -84,6 +85,13 @@ function Home() {
     <div>
       <div>
         <h2>Todo List</h2>
+        <div>
+          <button onClick={() => setFilter("")}>All</button>
+          <button onClick={() => setFilter("?completed=true/")}>
+            Completed
+          </button>
+          <button onClick={() => setFilter("?completed=false/")}>Todo</button>
+        </div>
         {todos.map((todo) => (
           <Todo
             todo={todo}
